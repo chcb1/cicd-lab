@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# coverage.xml is what SonarQube will read in Phase 2.
+addopts = "--cov=app --cov-report=term-missing --cov-report=xml --cov-fail-under=80"
