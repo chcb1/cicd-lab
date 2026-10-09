@@ -25,7 +25,7 @@ class Task(TaskIn):
 @app.get("/health")
 def health() -> dict:
     """Used by the Docker healthcheck and by the post-deploy smoke test."""
-    return {"status": "ok"}
+    return {"status": "up"}
 
 
 @app.get("/version")
