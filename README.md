@@ -2,7 +2,6 @@
 
 A small FastAPI service (Task API) used to practise a full CI/CD pipeline with
 GitHub Actions. The app is intentionally trivial; the pipeline is the point.
-teste
 
 ## What is in here
 
