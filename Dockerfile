@@ -9,7 +9,12 @@ WORKDIR /app
 
 # Dependencies first, so this layer is cached until requirements.txt changes.
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# pip is only needed to build the image. Removing it shrinks the attack surface:
+# its vendored urllib3, msgpack and setuptools carry CVEs the app never uses.
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip uninstall -y pip
 
 COPY app ./app
 

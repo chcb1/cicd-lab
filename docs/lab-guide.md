@@ -73,8 +73,22 @@ git config --list --show-origin                 # mostra de qual arquivo vem cad
 
 ### 4.2 GitHub CLI e autenticação
 
+Instalar pelo repositório oficial do GitHub CLI. O pacote `gh` do apt padrão do Ubuntu 22.04 é antigo (2.4.x) e não tem várias opções usadas neste guia, como `gh run list --branch`.
+
 ```bash
-sudo apt install -y gh
+(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
+	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+	&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y
+gh --version
+```
+
+```bash
 gh auth login            # GitHub.com > HTTPS > autenticar o Git: Yes > web browser
 gh auth status
 gh api -i user | grep -i x-oauth-scopes   # confere os escopos do token
@@ -216,7 +230,7 @@ gh secret list
 | Arquivo | Mudança |
 |---|---|
 | `sonar-project.properties` | Novo: organização, chave, fontes, testes, cobertura, `qualitygate.wait` |
-| `Dockerfile` | `LABEL org.opencontainers.image.source` liga o pacote do GHCR ao repositório |
+| `Dockerfile` | `LABEL org.opencontainers.image.source` liga o pacote do GHCR ao repositório; `pip uninstall -y pip` remove o pip da imagem final (ver 6.5) |
 | `.github/workflows/ci.yml` | Sonar no job de testes; job renomeado para `Build, scan and publish`, com Trivy e push ao GHCR |
 | `ops/branch-protection.json` | Checks obrigatórios atualizados para o novo nome do job |
 
@@ -257,7 +271,31 @@ gh run watch                 # execução na main: Sonar + publicação
 - GitHub > repositório > Packages: `cicd-lab` com a tag igual ao SHA do commit de merge.
 - Opcional, com Docker instalado: `docker pull ghcr.io/chcb1/cicd-lab:<sha>`.
 
-### 6.5 Exercício: dependência vulnerável
+### 6.5 Primeiro achado real do Trivy (2026-10-16)
+
+O primeiro PR da Fase 2 foi reprovado com 4 vulnerabilidades HIGH:
+
+| Pacote | Vulnerabilidade | Instalada | Corrigida |
+|---|---|---|---|
+| msgpack | GHSA-6v7p-g79w-8964 | 1.1.2 | 1.2.1 |
+| setuptools | CVE-2025-47273 | 70.3.0 | 78.1.1 |
+| urllib3 | CVE-2026-97687, CVE-2026-97689 | 2.7.0 | 2.8.0 |
+
+Nenhum desses pacotes é dependência da aplicação. Os quatro estão **embutidos no próprio pip** (`pip/_vendor/vendor.txt` do pip 26.2.1, a versão mais recente na data), que vem na imagem base. Atualizar o pip não resolve, porque a versão nova ainda embute as mesmas versões.
+
+Decisão: **remover o pip da imagem final** depois de instalar as dependências. O pip só é necessário para construir a imagem, não para rodar a aplicação. Remover a ferramenta de build reduz a superfície de ataque, e esse é o padrão de mercado.
+
+Alternativa descartada: ignorar os CVEs em um `.trivyignore`. Seria aceitar o risco de algo que pode simplesmente ser removido.
+
+Diagnóstico usado:
+
+```bash
+gh run list -L 5
+gh run view <ID> --log-failed > trivy.log
+grep -n -E "Total:|CVE-|GHSA-|ERROR|FATAL" trivy.log | head -40
+```
+
+### 6.6 Exercício: dependência vulnerável
 
 Em uma branch, adicionar ao `requirements.txt` uma versão antiga com CVE conhecido (por exemplo `requests==2.19.0`), abrir o PR e confirmar que o Trivy reprova o build, listando o CVE e a versão corrigida. Depois remover e fechar o PR sem merge.
 
@@ -288,6 +326,7 @@ Em uma branch, adicionar ao `requirements.txt` uma versão antiga com CVE conhec
 | 2026-10-06 | Repositório público | Proteção de branch no plano Free só funciona em repo público |
 | 2026-10-09 | JFrog (JCR/Xray) adiada | Xray só tem trial de 14 dias; a JCR é auto-hospedada e pesada, e exigiria antecipar o runner e tornar o repo privado. Para conhecer: Platform Tour ou trial isolado |
 | 2026-10-09 | Trivy mantido, fixado por SHA (v0.36.0) | Ver incidente de março/2026 abaixo |
+| 2026-10-16 | Remover o pip da imagem final | CVEs HIGH em dependências embutidas no pip; ferramenta de build não pertence à imagem de execução (seção 6.5) |
 
 ## 10. Troubleshooting
 
@@ -295,7 +334,10 @@ Em uma branch, adicionar ao `requirements.txt` uma versão antiga com CVE conhec
 |---|---|---|
 | `mv: cannot move ... to '/pasta': Permission denied` | `/pasta` é a raiz do sistema | Usar `~/pasta`; não usar `sudo` para trabalho de projeto |
 | `.github` ficou para trás ao mover arquivos | O glob `*` não inclui arquivos ocultos | `ls -la`; mover os ocultos explicitamente |
-| `gh auth status` não mostra os escopos | `gh` antiga do apt (Ubuntu 22.04) | `gh api -i user \| grep -i x-oauth-scopes` |
+| `gh auth status` não mostra os escopos | `gh` antiga do apt (Ubuntu 22.04) | `gh api -i user \| grep -i x-oauth-scopes`, ou atualizar a `gh` (seção 4.2) |
+| `unknown flag: --branch` no `gh run list` | `gh` antiga do apt (2.4.x) | Atualizar a `gh` pelo repositório oficial (seção 4.2) |
+| Trivy reprova `urllib3`/`msgpack`/`setuptools` que a app não usa | Pacotes embutidos no pip da imagem base | Remover o pip da imagem final (seção 6.5) |
+| `run or job ID required when not running interactively` | Saída redirecionada (`>`) desliga o menu interativo | Passar o ID: `gh run list -L 5`, depois `gh run view <ID> --log-failed` |
 | Push recusado mencionando `workflow` scope | Token sem o escopo `workflow` | `gh auth refresh -h github.com -s workflow` |
 | Push direto na `main` aceito apesar da "proteção" | A regra não foi salva | Verificar pela API (5.4); salvar com Create ou aplicar via `gh api` |
 | PR preso em "Expected — Waiting for status" | Check obrigatório com nome de job que não existe mais | Atualizar `ops/branch-protection.json` e aplicar via `gh api` |
@@ -346,3 +388,47 @@ git ls-remote --tags https://github.com/aquasecurity/trivy-action | grep 'v0.36.
 | Repository secrets | Pipeline variables (secret) / variable groups |
 | GHCR | Azure Artifacts / Azure Container Registry |
 | Environments com aprovação | Environments com approvals and checks |
+
+## 13. Alternativa visual: VS Code e GitHub web
+
+O lab pode ser feito com o VS Code (edição e Git) e a interface web do GitHub (PRs, pipeline, configurações) no lugar do `nano` e de boa parte da `gh`.
+
+### 13.1 VS Code conectado à máquina do lab (Remote - SSH)
+
+O VS Code roda no notebook e edita os arquivos diretamente na máquina do lab. O terminal integrado também roda lá.
+
+Na máquina do lab (uma vez):
+
+```bash
+sudo apt install -y openssh-server
+sudo systemctl enable --now ssh
+sudo ufw allow in on tailscale0 to any port 22   # SSH só pela rede do Tailscale
+```
+
+No notebook: instalar o VS Code e a extensão **Remote - SSH** (Microsoft). Depois `Cmd+Shift+P` > **Remote-SSH: Connect to Host** > `usuario@host-da-maquina`, e **File > Open Folder** > pasta do projeto. Extensão opcional: **GitHub Pull Requests** (PRs e checks dentro do VS Code).
+
+### 13.2 Equivalências
+
+| Tarefa | Linha de comando | VS Code | GitHub web |
+|---|---|---|---|
+| Editar arquivo | `nano` | Explorer > abrir o arquivo | Ícone de lápis (cria commit na branch) |
+| Copiar arquivo do notebook para o projeto | `cp` / `unzip` | Arrastar do Finder para o Explorer | Add file > Upload files |
+| Ver branch atual | `git status` | Barra inferior esquerda | — |
+| Criar ou trocar de branch | `git switch -c` / `git switch` | Clicar no nome da branch na barra inferior | — |
+| Revisar mudanças | `git diff` | Source Control > clicar no arquivo (diff lado a lado) | Aba Files changed do PR |
+| Stage, commit e push | `git add` / `commit` / `push` | Source Control: `+`, mensagem, Commit, Sync Changes | — |
+| Atualizar a `main` local | `git pull` | Sync Changes | — |
+| Limpar referências remotas | `git fetch --prune` | Source Control > `...` > Pull, Push > Fetch (Prune) | — |
+| Abrir PR | `gh pr create` | Extensão GitHub Pull Requests | Banner Compare & pull request |
+| Acompanhar pipeline | `gh run watch` | Extensão GitHub Pull Requests | Aba Checks do PR ou aba Actions |
+| Ler log de falha | `gh run view <ID> --log-failed` | — | Actions > execução > job > expandir o step |
+| Rodar de novo | `gh run rerun --failed` | — | Actions > execução > Re-run failed jobs |
+| Merge com squash | `gh pr merge --squash --delete-branch` | Extensão GitHub Pull Requests | Squash and merge, depois Delete branch |
+| Apagar branch remota | `git push origin --delete` | — | Aba Branches > lixeira |
+| Gravar segredo | `gh secret set` | — | Settings > Secrets and variables > Actions > New repository secret |
+| Proteção de branch | `gh api -X PUT ... --input ops/branch-protection.json` | — | Settings > Branches > Edit (manual; não usa o arquivo versionado) |
+| Ver o artefato | — | — | Repositório > Packages |
+
+Continuam no terminal (integrado do VS Code): `git reset --hard`, `gh api` e as consultas de verificação, e qualquer comando com `sudo`.
+
+**Atenção:** sempre confira a branch na barra inferior antes do commit. Editar pelo lápis do GitHub web cria commits direto no remoto; depois disso, sincronize a cópia local (Sync Changes) para não divergir.
