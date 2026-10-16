@@ -1,0 +1,448 @@
+Build, scan and publish	Scan the image for vulnerabilities	﻿2026-10-16T17:01:00.7699617Z ##[group]Run aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7699968Z with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7700133Z   version: v0.70.0
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7700419Z   image-ref: ghcr.io/chcb1/cicd-lab:3add23cda1b45c95f7e6b3b1ca02c5badf3f1a25
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7700751Z   severity: CRITICAL,HIGH
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7700946Z   ignore-unfixed: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7701128Z   exit-code: 1
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7701322Z   scan-type: image
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7701486Z   scan-ref: .
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7701659Z   vuln-type: os,library
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7701834Z   format: table
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7702058Z   cache-dir: /home/runner/work/cicd-lab/cicd-lab/.cache/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7702320Z   list-all-pkgs: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7702498Z   cache: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7702659Z   skip-setup-trivy: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7704526Z   token-setup-trivy: ***
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7704720Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7704885Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7705124Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7755943Z ##[start-action display=Install Trivy;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7859362Z ##[group]Run aquasecurity/setup-trivy@3fb12ec12f41e471780db15c232d5dd185dcb514
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7859704Z with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7859863Z   version: v0.70.0
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7860034Z   cache: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7861960Z   token: ***
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7862313Z   path: $HOME/.local/bin
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7862529Z   github-server-url: https://github.com
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7862746Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7862912Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7863111Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7868706Z ##[start-action display=Binary dir;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.binary-dir]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7884854Z ##[group]Run echo "dir=$HOME/.local/bin/trivy-bin" >> $GITHUB_OUTPUT
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7885226Z [36;1mecho "dir=$HOME/.local/bin/trivy-bin" >> $GITHUB_OUTPUT[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7945213Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7945499Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7945680Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.7945888Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8048072Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.binary-dir;outcome=success;conclusion=success;duration_ms=17]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8052767Z ##[start-action display=Check the version for caching;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8058844Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run;outcome=skipped;conclusion=skipped;duration_ms=0]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8060763Z ##[start-action display=Restore Trivy binary from cache;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.cache]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8104355Z ##[group]Run actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8104680Z with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8104868Z   path: /home/runner/.local/bin/trivy-bin
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8105128Z   key: trivy-binary-v0.70.0-Linux-X64
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8105366Z   enableCrossOsArchive: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8105571Z   fail-on-cache-miss: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8105765Z   lookup-only: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8105935Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8106102Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:00.8106305Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1211524Z Cache not found for input keys: trivy-binary-v0.70.0-Linux-X64
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1289696Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.cache;outcome=success;conclusion=success;duration_ms=322]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1292240Z ##[start-action display=Checkout install script;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_checkout]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1367130Z ##[group]Run actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1367446Z with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1367618Z   repository: aquasecurity/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1367828Z   sparse-checkout: contrib
+Build, scan and publish	Scan the image for vulnerabilities	
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1368361Z   path: trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1368522Z   fetch-depth: 1
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1368719Z   ref: 75c4dc0f45c5d7ffd05ae26df1e0c666787bdf2a
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1368983Z   github-server-url: https://github.com
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1370906Z   token: ***
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1371084Z   ssh-strict: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1371254Z   ssh-user: git
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1371442Z   persist-credentials: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1371627Z   clean: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1371797Z   sparse-checkout-cone-mode: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1372006Z   fetch-tags: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1372172Z   show-progress: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1372342Z   lfs: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1372492Z   submodules: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1372666Z   set-safe-directory: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1372846Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1373003Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.1373196Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2053481Z Syncing repository: aquasecurity/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2056872Z ##[group]Getting Git version info
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2057388Z Working directory is '/home/runner/work/cicd-lab/cicd-lab/trivy'
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2087895Z [command]/usr/bin/git version
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2123167Z git version 2.55.0
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2137583Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2148532Z Temporarily overriding HOME='/home/runner/work/_temp/b1338030-3841-4a66-9ab0-d2ffc54d8454' before making global git config changes
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2149881Z Adding repository directory to the temporary git global config as a safe directory
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2152233Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/cicd-lab/cicd-lab/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2183069Z ##[group]Initializing the repository
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2187091Z [command]/usr/bin/git init /home/runner/work/cicd-lab/cicd-lab/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2229215Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2230164Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2231234Z hint: to use in all of your new repositories, which will suppress this warning,
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2232001Z hint: call:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2232252Z hint:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2232571Z hint: 	git config --global init.defaultBranch <name>
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2232964Z hint:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2233332Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2233969Z hint: 'development'. The just-created branch can be renamed via this command:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2234437Z hint:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2234677Z hint: 	git branch -m <name>
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2234965Z hint:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2235359Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2236024Z Initialized empty Git repository in /home/runner/work/cicd-lab/cicd-lab/trivy/.git/
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2238617Z [command]/usr/bin/git remote add origin https://github.com/aquasecurity/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2274201Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2274664Z ##[group]Disabling automatic garbage collection
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2279040Z [command]/usr/bin/git config --local gc.auto 0
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2310987Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2311465Z ##[group]Setting up auth
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2311845Z Removing SSH command configuration
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2317373Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2345988Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2551648Z Removing HTTP extra header
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2557174Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2598811Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2811869Z Removing includeIf entries pointing to credentials config files
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2819050Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.2852278Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3055493Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-7d13a61c-c43f-403e-a9ab-f14d52cf1e00.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3090524Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/cicd-lab/cicd-lab/trivy/.git.path /home/runner/work/_temp/git-credentials-7d13a61c-c43f-403e-a9ab-f14d52cf1e00.config
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3120321Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/cicd-lab/cicd-lab/trivy/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-7d13a61c-c43f-403e-a9ab-f14d52cf1e00.config
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3890088Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/trivy/.git.path /github/runner_temp/git-credentials-7d13a61c-c43f-403e-a9ab-f14d52cf1e00.config
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3931239Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/trivy/.git/worktrees/*.path /github/runner_temp/git-credentials-7d13a61c-c43f-403e-a9ab-f14d52cf1e00.config
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3962059Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3962524Z ##[group]Fetching the repository
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:01.3972416Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --filter=blob:none --depth=1 origin 75c4dc0f45c5d7ffd05ae26df1e0c666787bdf2a
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0237663Z From https://github.com/aquasecurity/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0238409Z  * branch            75c4dc0f45c5d7ffd05ae26df1e0c666787bdf2a -> FETCH_HEAD
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0241103Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0241465Z ##[group]Determining the checkout info
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0242983Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0243418Z ##[group]Setting up sparse checkout
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0247038Z [command]/usr/bin/git sparse-checkout set contrib
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0283777Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0288039Z ##[group]Checking out the ref
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.0288981Z [command]/usr/bin/git checkout --progress --force 75c4dc0f45c5d7ffd05ae26df1e0c666787bdf2a
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6079821Z Note: switching to '75c4dc0f45c5d7ffd05ae26df1e0c666787bdf2a'.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6080346Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6080652Z You are in 'detached HEAD' state. You can look around, make experimental
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6081233Z changes and commit them, and you can discard any commits you make in this
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6081896Z state without impacting any branches by switching back to a branch.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6082265Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6082677Z If you want to create a new branch to retain commits you create, you may
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6083225Z do so (now or later) by using -c with the switch command. Example:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6083538Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6083676Z   git switch -c <new-branch-name>
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6083880Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6084003Z Or undo this operation with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6084188Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6084295Z   git switch -
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6084443Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6084688Z Turn off this advice by setting config variable advice.detachedHead to false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6085037Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6085257Z HEAD is now at 75c4dc0 chore: add client option to install script (#9962)
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6086459Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6125384Z [command]/usr/bin/git log -1 --format=%H
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6149629Z 75c4dc0f45c5d7ffd05ae26df1e0c666787bdf2a
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6237452Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_checkout;outcome=success;conclusion=success;duration_ms=1494]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6240141Z ##[start-action display=Install Trivy;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_2]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6260454Z ##[group]Run echo "installing Trivy binary"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6260765Z [36;1mecho "installing Trivy binary"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6261162Z [36;1mbash ./trivy/contrib/install.sh -b /home/runner/.local/bin/trivy-bin -c setup-trivy v0.70.0[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6261611Z [36;1mcp -r ./trivy/contrib /home/runner/.local/bin/trivy-bin/contrib[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6261916Z [36;1mrm -rf ./trivy[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6317549Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6317827Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6318001Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6318382Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6390216Z installing Trivy binary
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.6513098Z aquasecurity/trivy info checking GitHub for tag 'v0.70.0'
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:02.9919732Z aquasecurity/trivy info found version: 0.70.0 for v0.70.0/Linux/64bit
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.4954722Z aquasecurity/trivy info installed /home/runner/.local/bin/trivy-bin/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5322223Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_2;outcome=success;conclusion=success;duration_ms=1908]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5324744Z ##[start-action display=Add Trivy binary to $GITHUB_PATH;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_3]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5343178Z ##[group]Run echo /home/runner/.local/bin/trivy-bin >> $GITHUB_PATH
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5343736Z [36;1mecho /home/runner/.local/bin/trivy-bin >> $GITHUB_PATH[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5399029Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5399308Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5399475Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5399677Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5476560Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__run_3;outcome=success;conclusion=success;duration_ms=15]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5478853Z ##[start-action display=Save Trivy binary to cache;id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_cache]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5508777Z ##[group]Run actions/cache/save@9255dc7a253b0ccc959486e2bca901246202afeb
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5509088Z with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5509276Z   path: /home/runner/.local/bin/trivy-bin
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5509511Z   key: trivy-binary-v0.70.0-Linux-X64
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5509735Z   enableCrossOsArchive: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5509949Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5510111Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.5510319Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:04.6659105Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/cicd-lab/cicd-lab --files-from manifest.txt --use-compress-program zstdmt
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.2690440Z Sent 38731776 of 43751193 (88.5%), 36.9 MBs/sec
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.4972850Z Sent 43751193 of 43751193 (100.0%), 33.9 MBs/sec
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.7985841Z Cache saved with key: trivy-binary-v0.70.0-Linux-X64
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8062403Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy.__actions_cache;outcome=success;conclusion=success;duration_ms=2258]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8073984Z ##[end-action id=__aquasecurity_trivy-action.__aquasecurity_setup-trivy;outcome=success;conclusion=success;duration_ms=6031]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8076091Z ##[start-action display=Get current date;id=__aquasecurity_trivy-action.date]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8092244Z ##[group]Run echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8092620Z [36;1mecho "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8147198Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8147475Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8147657Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8147867Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8231949Z ##[end-action id=__aquasecurity_trivy-action.date;outcome=success;conclusion=success;duration_ms=15]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8233757Z ##[start-action display=Restore DB from cache;id=__aquasecurity_trivy-action.__actions_cache]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8281542Z ##[group]Run actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8281838Z with:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8282061Z   path: /home/runner/work/cicd-lab/cicd-lab/.cache/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8282330Z   key: cache-trivy-2026-10-16
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8282544Z   restore-keys: cache-trivy-
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8282754Z   enableCrossOsArchive: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8282974Z   fail-on-cache-miss: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8283171Z   lookup-only: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8283348Z   save-always: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8283515Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8283685Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:06.8283886Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1390931Z Cache not found for input keys: cache-trivy-2026-10-16, cache-trivy-
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1450873Z ##[end-action id=__aquasecurity_trivy-action.__actions_cache;outcome=success;conclusion=success;duration_ms=321]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1456951Z ##[start-action display=Set GitHub Path;id=__aquasecurity_trivy-action.__run]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1480157Z ##[group]Run echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1480647Z [36;1mecho "$GITHUB_ACTION_PATH" >> $GITHUB_PATH[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1541457Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1541870Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1542066Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1542494Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/aquasecurity/trivy-action/ed142fd0673e97e23eac54620cfb913e5ce36c25
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1543131Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1627374Z ##[end-action id=__aquasecurity_trivy-action.__run;outcome=success;conclusion=success;duration_ms=16]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1629521Z ##[start-action display=Clear Trivy Envs file;id=__aquasecurity_trivy-action.__run_2]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1644688Z ##[group]Run rm -f trivy_envs.txt
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1644944Z [36;1mrm -f trivy_envs.txt[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1645156Z [36;1mtouch trivy_envs.txt[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1699733Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1700037Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1700232Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1700455Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1799885Z ##[end-action id=__aquasecurity_trivy-action.__run_2;outcome=success;conclusion=success;duration_ms=16]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1804154Z ##[start-action display=Set Trivy environment variables;id=__aquasecurity_trivy-action.__run_3]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1819589Z ##[group]Run # Note: There is currently no way to distinguish between undefined variables and empty strings in GitHub Actions.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1820257Z [36;1m# Note: There is currently no way to distinguish between undefined variables and empty strings in GitHub Actions.[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1820765Z [36;1m# This limitation affects how we handle default values and empty inputs.[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1821185Z [36;1m# For more information, see: https://github.com/actions/runner/issues/924[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1821530Z [36;1m[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1821833Z [36;1m# The following logic implements the configuration priority described in the README:[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1822171Z [36;1m#[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1822331Z [36;1m# Inputs[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1822511Z [36;1m# Environment Variables[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1822725Z [36;1m# Config File[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1822904Z [36;1m# Defaults[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1823087Z [36;1m#[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1823408Z [36;1m# As noted above defaults are awkward to handle as GitHub Actions will inject those values as the input[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1823929Z [36;1m# if the caller doesn't provide them, thus if the input matches the default we don't set it as we[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1824432Z [36;1m# can't tell the difference.  Plus if we did set it when it was the default value then it could potentially[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1824985Z [36;1m# override an external environment variable, or something in the callers configuration file, which then wouldn't[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1825622Z [36;1m# match the configuration priority that is documented.[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1825901Z [36;1mset_env_var_if_provided() {[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1826118Z [36;1m  local var_name="$1"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1826324Z [36;1m  local input_value="$2"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1826545Z [36;1m  local default_value="$3"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1826744Z [36;1m[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1826987Z [36;1m  if [ -n "$input_value" ] && [ "$input_value" != "$default_value" ]; then[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1827359Z [36;1m    # If action was provided with explicit input by the caller set that[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1827788Z [36;1m    # Use printf %q to safely escape special characters and prevent command injection[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1828342Z [36;1m    printf 'export %s=%q\n' "$var_name" "$input_value" >> trivy_envs.txt[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1828628Z [36;1m  fi[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1828793Z [36;1m}[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1828953Z [36;1m[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1829183Z [36;1m# Set environment variables, handling those with default values[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1829644Z [36;1m# cf. https://aquasecurity.github.io/trivy/latest/docs/configuration/#environment-variables[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1830061Z [36;1mset_env_var_if_provided "TRIVY_INPUT" "$INPUT_INPUT" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1830400Z [36;1mset_env_var_if_provided "TRIVY_EXIT_CODE" "$INPUT_EXIT_CODE" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1830917Z [36;1mset_env_var_if_provided "TRIVY_IGNORE_UNFIXED" "$INPUT_IGNORE_UNFIXED" "false"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1831319Z [36;1mset_env_var_if_provided "TRIVY_PKG_TYPES" "$INPUT_VULN_TYPE" "os,library"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1831776Z [36;1mset_env_var_if_provided "TRIVY_SEVERITY" "$INPUT_SEVERITY" "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1832189Z [36;1mset_env_var_if_provided "TRIVY_FORMAT" "$INPUT_FORMAT" "table"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1832522Z [36;1mset_env_var_if_provided "TRIVY_TEMPLATE" "$INPUT_TEMPLATE" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1832875Z [36;1mset_env_var_if_provided "TRIVY_OUTPUT" "$INPUT_OUTPUT" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1833206Z [36;1mset_env_var_if_provided "TRIVY_SKIP_DIRS" "$INPUT_SKIP_DIRS" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1833555Z [36;1mset_env_var_if_provided "TRIVY_SKIP_FILES" "$INPUT_SKIP_FILES" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1833895Z [36;1mset_env_var_if_provided "TRIVY_TIMEOUT" "$INPUT_TIMEOUT" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1834254Z [36;1mset_env_var_if_provided "TRIVY_IGNORE_POLICY" "$INPUT_IGNORE_POLICY" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1834625Z [36;1mset_env_var_if_provided "TRIVY_QUIET" "$INPUT_HIDE_PROGRESS" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1835112Z [36;1mset_env_var_if_provided "TRIVY_LIST_ALL_PKGS" "$INPUT_LIST_ALL_PKGS" "false"[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1835516Z [36;1mset_env_var_if_provided "TRIVY_SCANNERS" "$INPUT_SCANNERS" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1835847Z [36;1mset_env_var_if_provided "TRIVY_CONFIG" "$INPUT_TRIVY_CONFIG" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1836173Z [36;1mset_env_var_if_provided "TRIVY_TF_VARS" "$INPUT_TF_VARS" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1836527Z [36;1mset_env_var_if_provided "TRIVY_DOCKER_HOST" "$INPUT_DOCKER_HOST" ""[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1891017Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1891291Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1891473Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1891684Z   INPUT_INPUT: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1891864Z   INPUT_EXIT_CODE: 1
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1892054Z   INPUT_IGNORE_UNFIXED: true
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1892275Z   INPUT_VULN_TYPE: os,library
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1892486Z   INPUT_SEVERITY: CRITICAL,HIGH
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1892692Z   INPUT_FORMAT: table
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1892874Z   INPUT_TEMPLATE: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1893071Z   INPUT_OUTPUT: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1893242Z   INPUT_SKIP_DIRS: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1893417Z   INPUT_SKIP_FILES: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1893590Z   INPUT_TIMEOUT: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1893764Z   INPUT_IGNORE_POLICY: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1893950Z   INPUT_HIDE_PROGRESS: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1894134Z   INPUT_LIST_ALL_PKGS: false
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1894327Z   INPUT_SCANNERS: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1894637Z   INPUT_TRIVY_CONFIG: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1894822Z   INPUT_TF_VARS: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1894985Z   INPUT_DOCKER_HOST: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1895161Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1975805Z ##[end-action id=__aquasecurity_trivy-action.__run_3;outcome=success;conclusion=success;duration_ms=17]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1979490Z ##[start-action display=Run Trivy;id=__aquasecurity_trivy-action.__run_4]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1994353Z ##[group]Run entrypoint.sh
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.1994591Z [36;1mentrypoint.sh[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2046489Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2046768Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2046952Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2047170Z   INPUT_SCAN_TYPE: image
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2047474Z   INPUT_IMAGE_REF: ghcr.io/chcb1/cicd-lab:3add23cda1b45c95f7e6b3b1ca02c5badf3f1a25
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2047802Z   INPUT_SCAN_REF: .
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2047985Z   INPUT_TRIVYIGNORES: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2048333Z   INPUT_GITHUB_PAT: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2048525Z   INPUT_LIMIT_SEVERITIES_FOR_SARIF: 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2048814Z   TRIVY_CACHE_DIR: /home/runner/work/cicd-lab/cicd-lab/.cache/trivy
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2049101Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2143461Z Running Trivy with options: trivy image ghcr.io/chcb1/cicd-lab:3add23cda1b45c95f7e6b3b1ca02c5badf3f1a25
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2537818Z 2026-10-16T17:01:07Z	INFO	[vulndb] Need to update DB
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2538782Z 2026-10-16T17:01:07Z	INFO	[vulndb] Downloading vulnerability DB...
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:07.2539217Z 2026-10-16T17:01:07Z	INFO	[vulndb] Downloading artifact...	repo="mirror.gcr.io/aquasec/trivy-db:2"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:12.3229092Z 35.14 MiB / 128.03 MiB [---------------->___________________________________________] 27.45% ? p/s ?76.62 MiB / 128.03 MiB [----------------------------------->________________________] 59.84% ? p/s ?110.94 MiB / 128.03 MiB [--------------------------------------------------->_______] 86.65% ? p/s ?128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 154.59 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 154.59 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 154.59 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 144.61 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 144.61 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 144.61 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 135.28 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 135.28 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 135.28 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 126.56 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 126.56 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 126.56 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 118.39 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 118.39 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 118.39 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [------------------------------------------->] 100.00% 110.75 MiB p/s ETA 0s128.03 MiB / 128.03 MiB [-----------------------------------------------] 100.00% 35.36 MiB p/s 3.8s2026-10-16T17:01:12Z	INFO	[vulndb] Artifact successfully downloaded	repo="mirror.gcr.io/aquasec/trivy-db:2"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:12.3824889Z 2026-10-16T17:01:12Z	INFO	[vuln] Vulnerability scanning is enabled
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:12.3825754Z 2026-10-16T17:01:12Z	INFO	[secret] Secret scanning is enabled
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:12.3826705Z 2026-10-16T17:01:12Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:12.3828473Z 2026-10-16T17:01:12Z	INFO	[secret] Please see https://trivy.dev/docs/v0.70/guide/scanner/secret#recommendation for faster secret detection
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:14.1119995Z 2026-10-16T17:01:14Z	WARN	Third-party SBOM may lead to inaccurate vulnerability detection
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:14.1121103Z 2026-10-16T17:01:14Z	WARN	Recommend using Trivy to generate SBOMs
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:14.7150046Z 2026-10-16T17:01:14Z	INFO	[python] Licenses acquired from one or more METADATA files may be subject to additional terms. Use `--debug` flag to see all affected packages.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.5538332Z 2026-10-16T17:01:15Z	INFO	Detected OS	family="debian" version="13.7"
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.5538904Z 2026-10-16T17:01:15Z	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=87
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.5640383Z 2026-10-16T17:01:15Z	INFO	Number of language-specific files	num=1
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.5640847Z 2026-10-16T17:01:15Z	INFO	[python-pkg] Detecting vulnerabilities...
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.5664815Z 2026-10-16T17:01:15Z	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.70/guide/scanner/vulnerability#severity-selection for details.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7603017Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7603571Z Report Summary
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7603794Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7604600Z ┌──────────────────────────────────────────────────────────────────────────────────┬────────────┬─────────────────┬─────────┐
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7605847Z │                                      Target                                      │    Type    │ Vulnerabilities │ Secrets │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7606689Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7607705Z │ ghcr.io/chcb1/cicd-lab:3add23cda1b45c95f7e6b3b1ca02c5badf3f1a25 (debian 13.7)    │   debian   │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7608766Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7609667Z │ Python                                                                           │ python-pkg │        4        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7610546Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7611618Z │ usr/local/lib/python3.13/site-packages/annotated_doc-0.0.5.dist-info/METADATA    │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7612671Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7613627Z │ usr/local/lib/python3.13/site-packages/annotated_types-0.8.0.dist-info/METADATA  │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7614653Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7615847Z │ usr/local/lib/python3.13/site-packages/anyio-4.15.1.dist-info/METADATA           │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7616837Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7617277Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7617436Z 📣 [34mNotices:[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7617937Z   - Version 0.76.0 of Trivy is now available, current version is 0.70.0
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7618398Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7618652Z To suppress version checks, run Trivy scans with the --skip-version-check flag
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7619028Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7619594Z │ usr/local/lib/python3.13/site-packages/click-8.5.0.dist-info/METADATA            │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7620689Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7621699Z │ usr/local/lib/python3.13/site-packages/fastapi-0.142.2.dist-info/METADATA        │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7622800Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7623780Z │ usr/local/lib/python3.13/site-packages/h11-0.16.0.dist-info/METADATA             │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7624844Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7625848Z │ usr/local/lib/python3.13/site-packages/httptools-0.9.0.dist-info/METADATA        │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7626832Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7627713Z │ usr/local/lib/python3.13/site-packages/idna-3.20.dist-info/METADATA              │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7628595Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7629227Z │ usr/local/lib/python3.13/site-packages/opentelemetry_api-1.45.1.dist-info/METAD- │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7629792Z │ ATA                                                                              │            │                 │         │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7630499Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7631460Z │ usr/local/lib/python3.13/site-packages/pip-26.2.1.dist-info/METADATA             │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7632488Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7633581Z │ usr/local/lib/python3.13/site-packages/pydantic-2.14.1.dist-info/METADATA        │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7634434Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7635026Z │ usr/local/lib/python3.13/site-packages/pydantic_core-2.50.1.dist-info/METADATA   │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7635771Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7636378Z │ usr/local/lib/python3.13/site-packages/python_dotenv-1.2.4.dist-info/METADATA    │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7637009Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7637587Z │ usr/local/lib/python3.13/site-packages/pyyaml-6.0.3.dist-info/METADATA           │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7638651Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7639274Z │ usr/local/lib/python3.13/site-packages/starlette-1.8.0.dist-info/METADATA        │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7639899Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7640511Z │ usr/local/lib/python3.13/site-packages/typing_extensions-4.16.0.dist-info/METAD- │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7641074Z │ ATA                                                                              │            │                 │         │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7641590Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7642188Z │ usr/local/lib/python3.13/site-packages/typing_inspection-0.4.4.dist-info/METADA- │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7642896Z │ TA                                                                               │            │                 │         │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7643408Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7643999Z │ usr/local/lib/python3.13/site-packages/uvicorn-0.54.0.dist-info/METADATA         │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7644743Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7645333Z │ usr/local/lib/python3.13/site-packages/uvloop-0.23.0.dist-info/METADATA          │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7645958Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7646547Z │ usr/local/lib/python3.13/site-packages/watchfiles-1.3.0.dist-info/METADATA       │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7647217Z ├──────────────────────────────────────────────────────────────────────────────────┼────────────┼─────────────────┼─────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7647805Z │ usr/local/lib/python3.13/site-packages/websockets-17.2.dist-info/METADATA        │ python-pkg │        0        │    -    │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7648617Z └──────────────────────────────────────────────────────────────────────────────────┴────────────┴─────────────────┴─────────┘
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7648953Z Legend:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7649133Z - '-': Not scanned
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7649348Z - '0': Clean (no security findings detected)
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7649522Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7649526Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7649618Z For OSS Maintainers: VEX Notice
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7649851Z --------------------------------
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7650465Z If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7651488Z VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7652208Z Learn more and start using VEX: https://trivy.dev/docs/v0.70/guide/supply-chain/vex/repo#publishing-vex-documents
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7652545Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7652726Z To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7652965Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7652976Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7653063Z Python (python-pkg)
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7653257Z ===================
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7653458Z Total: 4 (HIGH: 4, CRITICAL: 0)
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7653591Z 
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7653981Z ┌────────────┬─────────────────────┬──────────┬────────┬───────────────────┬───────────────┬────────────────────────────────────────────────────────────┐
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7654679Z │  Library   │    Vulnerability    │ Severity │ Status │ Installed Version │ Fixed Version │                           Title                            │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7655398Z ├────────────┼─────────────────────┼──────────┼────────┼───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7656092Z │ msgpack    │ GHSA-6v7p-g79w-8964 │ HIGH     │ fixed  │ 1.1.2             │ 1.2.1         │ MessagePack for Python: Out-of-bounds read / crash on      │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7656843Z │            │                     │          │        │                   │               │ Unpacker reuse after a...                                  │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7657415Z │            │                     │          │        │                   │               │ https://github.com/advisories/GHSA-6v7p-g79w-8964          │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7658050Z ├────────────┼─────────────────────┤          │        ├───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7658958Z │ setuptools │ CVE-2025-47273      │          │        │ 70.3.0            │ 78.1.1        │ setuptools: Path Traversal Vulnerability in setuptools     │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7659557Z │            │                     │          │        │                   │               │ PackageIndex                                               │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7660702Z │            │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2025-47273                 │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7661320Z ├────────────┼─────────────────────┤          │        ├───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7661938Z │ urllib3    │ CVE-2026-97687      │          │        │ 2.7.0             │ 2.8.0         │ urllib3: urllib3: Traffic interception via HTTPS proxy TLS │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7662533Z │            │                     │          │        │                   │               │ configuration override                                     │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7663230Z │            │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-97687                 │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7663804Z │            ├─────────────────────┤          │        │                   │               ├────────────────────────────────────────────────────────────┤
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7664394Z │            │ CVE-2026-97689      │          │        │                   │               │ urllib3: urllib3: Denial of Service via unbounded memory   │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7664965Z │            │                     │          │        │                   │               │ allocation in chunk parser...                              │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7665514Z │            │                     │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2026-97689                 │
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7666166Z └────────────┴─────────────────────┴──────────┴────────┴───────────────────┴───────────────┴────────────────────────────────────────────────────────────┘
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7675796Z ##[error]Process completed with exit code 1.
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7682685Z ##[end-action id=__aquasecurity_trivy-action.__run_4;outcome=failure;conclusion=failure;duration_ms=8570]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7685902Z ##[start-action display=Remove Trivy Envs file;id=__aquasecurity_trivy-action.__run_5]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7902152Z ##[group]Run rm -f trivy_envs.txt
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7902429Z [36;1mrm -f trivy_envs.txt[0m
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7957667Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7957953Z env:
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7958142Z   IMAGE: ghcr.io/chcb1/cicd-lab
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.7958444Z ##[endgroup]
+Build, scan and publish	Scan the image for vulnerabilities	2026-10-16T17:01:15.8816248Z ##[end-action id=__aquasecurity_trivy-action.__run_5;outcome=success;conclusion=success;duration_ms=112]

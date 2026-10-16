@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
 
-# Least privilege: this workflow only needs to read the code.
+# Least privilege by default: read-only. Jobs that need more ask for it themselves.
 permissions:
   contents: read
 
@@ -14,15 +14,21 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # The artifact's name in GitHub Container Registry, e.g. ghcr.io/chcb1/cicd-lab
+  IMAGE: ghcr.io/${{ github.repository }}
+
 jobs:
   test:
     name: Lint and test
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      # Actions are pinned to a commit SHA; the comment shows the matching tag.
+      # Actions are pinned to a full commit SHA; the comment shows the matching tag.
       - name: Check out the code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0 # full history, so SonarQube can tell new code from old
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
@@ -43,21 +49,34 @@ jobs:
       - name: Run tests with coverage
         run: pytest
 
-  docker-build:
-    name: Build image (no push yet)
+      # Free plan analyses the main branch only, so the quality gate runs after merge.
+      # A failed gate fails this job, which stops the image from being published.
+      - name: SonarQube Cloud analysis and quality gate
+        if: github.event_name == 'push'
+        uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9 # v8.3.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  build:
+    name: Build, scan and publish
     runs-on: ubuntu-latest
     needs: test
-    timeout-minutes: 10
+    timeout-minutes: 15
+    # Only this job may write to the registry.
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Check out the code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
+      # Build once, tagged with the commit SHA: this exact image is scanned, tested and published.
       - name: Build the image
-        run: docker build --build-arg APP_VERSION=${{ github.sha }} -t task-api:${{ github.sha }} .
+        run: docker build --build-arg APP_VERSION=${{ github.sha }} -t "$IMAGE:${{ github.sha }}" .
 
       - name: Smoke test the container
         run: |
-          docker run -d --name task-api -p 8000:8000 task-api:${{ github.sha }}
+          docker run -d --name task-api -p 8000:8000 "$IMAGE:${{ github.sha }}"
           for i in $(seq 1 15); do
             if curl -fsS http://localhost:8000/health; then
               echo
@@ -68,3 +87,23 @@ jobs:
           done
           docker logs task-api
           exit 1
+
+      # Pinned to the commit of v0.36.0. In March 2026 most trivy-action tags were
+      # force-pushed to malicious commits; only a full SHA pin is immutable.
+      - name: Scan the image for vulnerabilities
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
+        with:
+          version: v0.70.0
+          image-ref: ${{ env.IMAGE }}:${{ github.sha }}
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: "1"
+
+      # Pull requests stop here: only code merged into main becomes an artifact.
+      - name: Log in to GitHub Container Registry
+        if: github.event_name == 'push'
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Publish the image
+        if: github.event_name == 'push'
+        run: docker push "$IMAGE:${{ github.sha }}"

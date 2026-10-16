@@ -1,12 +1,20 @@
 FROM python:3.13-slim
 
+# Links the image published to GHCR back to its source repository.
+LABEL org.opencontainers.image.source="https://github.com/chcb1/cicd-lab"
+
 # Run as an unprivileged user, never as root.
 RUN useradd --create-home --uid 10001 appuser
 WORKDIR /app
 
 # Dependencies first, so this layer is cached until requirements.txt changes.
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# pip is only needed to build the image. Removing it shrinks the attack surface:
+# its vendored urllib3, msgpack and setuptools carry CVEs the app never uses.
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip uninstall -y pip
 
 COPY app ./app
 
