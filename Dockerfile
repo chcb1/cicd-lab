@@ -1,5 +1,8 @@
 FROM python:3.13-slim
 
+# Links the image published to GHCR back to its source repository.
+LABEL org.opencontainers.image.source="https://github.com/chcb1/cicd-lab"
+
 # Run as an unprivileged user, never as root.
 RUN useradd --create-home --uid 10001 appuser
 WORKDIR /app
